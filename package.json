@@ -1,10 +1,10 @@
 {
 	"name": "roo-cline",
-	"displayName": "Roo Code (prev. Roo Cline)",
+	"displayName": "PPCP order convertor",
 	"description": "A whole dev team of AI agents in your editor.",
 	"publisher": "RooVeterinaryInc",
 	"version": "3.8.6",
-	"icon": "assets/icons/rocket.png",
+	"icon": "assets/icons/pp.png",
 	"galleryBanner": {
 		"color": "#617A91",
 		"theme": "dark"
@@ -54,8 +54,8 @@
 			"activitybar": [
 				{
 					"id": "roo-cline-ActivityBar",
-					"title": "Roo Code",
-					"icon": "$(rocket)"
+					"title": "PPCP order convertor",
+					"icon": "./assets/icons/pp.png"
 				}
 			]
 		},
@@ -327,6 +327,8 @@
 		"@google/generative-ai": "^0.18.0",
 		"@mistralai/mistralai": "^1.3.6",
 		"@modelcontextprotocol/sdk": "^1.7.0",
+		"@rollup/rollup-darwin-arm64": "^4.36.0",
+		"@tailwindcss/oxide-darwin-arm64": "^4.0.14",
 		"@types/clone-deep": "^4.0.4",
 		"@types/pdf-parse": "^1.1.4",
 		"@types/tmp": "^0.2.6",
@@ -347,6 +349,7 @@
 		"globby": "^14.0.2",
 		"isbinaryfile": "^5.0.2",
 		"js-tiktoken": "^1.0.19",
+		"lightningcss": "^1.29.3",
 		"mammoth": "^1.8.0",
 		"monaco-vscode-textmate-theme-converter": "^0.1.7",
 		"openai": "^4.78.1",

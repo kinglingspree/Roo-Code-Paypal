@@ -31,6 +31,7 @@ import { validateCommand } from "../../utils/command-validation"
 import { getAllModes } from "../../../../src/shared/modes"
 import TelemetryBanner from "../common/TelemetryBanner"
 import { useAppTranslation } from "@/i18n/TranslationContext"
+import PaypalNvpButton from "./PaypalNvpButton"
 
 interface ChatViewProps {
 	isHidden: boolean
@@ -1126,13 +1127,18 @@ const ChatView = ({ isHidden, showAnnouncement, hideAnnouncement, showHistoryVie
 			//    but becomes scrollable when the viewport is too small
 			*/}
 			{!task && (
-				<AutoApproveMenu
-					style={{
-						marginBottom: -2,
-						flex: "0 1 auto", // flex-grow: 0, flex-shrink: 1, flex-basis: auto
-						minHeight: 0,
-					}}
-				/>
+				<div>
+					<div>
+						<AutoApproveMenu
+							style={{
+								marginBottom: -2,
+								flex: "0 1 auto", // flex-grow: 0, flex-shrink: 1, flex-basis: auto
+								minHeight: 0,
+							}}
+						/>
+					</div>
+					<PaypalNvpButton onSendMessage={handleSendMessage} />
+				</div>
 			)}
 
 			{task && (
@@ -1165,6 +1171,7 @@ const ChatView = ({ isHidden, showAnnouncement, hideAnnouncement, showHistoryVie
 						/>
 					</div>
 					<AutoApproveMenu />
+					<PaypalNvpButton onSendMessage={handleSendMessage} />
 					{showScrollToBottom ? (
 						<div
 							style={{
