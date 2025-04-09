@@ -20,7 +20,6 @@ import { useExtensionState } from "../../context/ExtensionStateContext"
 import { vscode } from "../../utils/vscode"
 import HistoryPreview from "../history/HistoryPreview"
 import { normalizeApiConfiguration } from "../settings/ApiOptions"
-import Announcement from "./Announcement"
 import BrowserSessionRow from "./BrowserSessionRow"
 import ChatRow from "./ChatRow"
 import ChatTextArea from "./ChatTextArea"
@@ -29,7 +28,6 @@ import AutoApproveMenu from "./AutoApproveMenu"
 import { AudioType } from "../../../../src/shared/WebviewMessage"
 import { validateCommand } from "../../utils/command-validation"
 import { getAllModes } from "../../../../src/shared/modes"
-import TelemetryBanner from "../common/TelemetryBanner"
 import { useAppTranslation } from "@/i18n/TranslationContext"
 import PaypalNvpButton from "./PaypalNvpButton"
 
@@ -48,7 +46,6 @@ const ChatView = ({ isHidden, showAnnouncement, hideAnnouncement, showHistoryVie
 	const { t } = useAppTranslation()
 	const modeShortcutText = `${isMac ? "⌘" : "Ctrl"} + . ${t("chat:forNextMode")}`
 	const {
-		version,
 		clineMessages: messages,
 		taskHistory,
 		apiConfiguration,
@@ -66,7 +63,6 @@ const ChatView = ({ isHidden, showAnnouncement, hideAnnouncement, showHistoryVie
 		alwaysAllowModeSwitch,
 		alwaysAllowSubtasks,
 		customModes,
-		telemetrySetting,
 	} = useExtensionState()
 
 	//const task = messages.length > 0 ? (messages[0].say === "task" ? messages[0] : undefined) : undefined) : undefined
@@ -100,7 +96,10 @@ const ChatView = ({ isHidden, showAnnouncement, hideAnnouncement, showHistoryVie
 	// (since it relies on the content of these messages, we are deep comparing. i.e. the button state after hitting button sets enableButtons to false, and this effect otherwise would have to true again even if messages didn't change
 	const lastMessage = useMemo(() => messages.at(-1), [messages])
 	const secondLastMessage = useMemo(() => messages.at(-2), [messages])
-
+	const [clientId, setClientId] = useState("")
+	const [secret, setSecret] = useState("")
+	const [clientIdError, setClientIdError] = useState(false)
+	const [secretError, setSecretError] = useState(false)
 	function playSound(audioType: AudioType) {
 		vscode.postMessage({ type: "playSound", audioType })
 	}
@@ -1101,8 +1100,6 @@ const ChatView = ({ isHidden, showAnnouncement, hideAnnouncement, showHistoryVie
 						flexDirection: "column",
 						paddingBottom: "10px",
 					}}>
-					{telemetrySetting === "unset" && <TelemetryBanner />}
-					{showAnnouncement && <Announcement version={version} hideAnnouncement={hideAnnouncement} />}
 					<div style={{ padding: "0 20px", flexShrink: 0 }}>
 						<h2>{t("chat:greeting")}</h2>
 						<p>{t("chat:aboutMe")}</p>
@@ -1137,7 +1134,17 @@ const ChatView = ({ isHidden, showAnnouncement, hideAnnouncement, showHistoryVie
 							}}
 						/>
 					</div>
-					<PaypalNvpButton onSendMessage={handleSendMessage} />
+					<PaypalNvpButton
+						onSendMessage={handleSendMessage}
+						clientId={clientId}
+						secret={secret}
+						clientIdError={clientIdError}
+						secretError={secretError}
+						setClientId={setClientId}
+						setSecret={setSecret}
+						setClientIdError={setClientIdError}
+						setSecretError={setSecretError}
+					/>
 				</div>
 			)}
 
@@ -1171,7 +1178,17 @@ const ChatView = ({ isHidden, showAnnouncement, hideAnnouncement, showHistoryVie
 						/>
 					</div>
 					<AutoApproveMenu />
-					<PaypalNvpButton onSendMessage={handleSendMessage} />
+					<PaypalNvpButton
+						onSendMessage={handleSendMessage}
+						clientId={clientId}
+						secret={secret}
+						clientIdError={clientIdError}
+						secretError={secretError}
+						setClientId={setClientId}
+						setSecret={setSecret}
+						setClientIdError={setClientIdError}
+						setSecretError={setSecretError}
+					/>
 					{showScrollToBottom ? (
 						<div
 							style={{

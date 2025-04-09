@@ -1,5 +1,5 @@
 {
-	"greeting": "What can PPCP order convertor do for you?",
+	"greeting": "What can PPCP Order Converter do for you?",
 	"task": {
 		"title": "Task",
 		"seeMore": "See more",
@@ -63,7 +63,7 @@
 		"tooltip": "Cancel the current operation"
 	},
 	"scrollToBottom": "Scroll to bottom of chat",
-	"aboutMe": "Welcome to the PPCP order convertor Tool!This tool is your ideal choice for converting PayPal NVP interfaces in your project to REST interfaces. It is fast, reliable, and easy to use.All you need to do is open your project, enter the Client ID and Secret, click the PPCP order convertor button, and then just leave the rest to our tool.If you need any assistance, our support team is always on standby. Start the conversion now and experience the advantages of RESTful APIs!",
+	"aboutMe": "Welcome to the PPCP Order Converter Tool!This tool is your ideal choice for converting PayPal NVP interfaces in your project to REST interfaces. It is fast, reliable, and easy to use.All you need to do is open your project, enter the Client ID and Secret, click the PPCP Order Converter button, and then just leave the rest to our tool.If you need any assistance, our support team is always on standby. Start the conversion now and experience the advantages of RESTful APIs!",
 	"selectMode": "Select mode for interaction",
 	"selectApiConfig": "Select API configuration",
 	"enhancePrompt": "Enhance prompt with additional context",

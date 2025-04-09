@@ -1,7 +1,7 @@
 <div align="center">
 <sub>
     <h1>Change Description</h1>
-   <h2>Add PPCP order convertor button . When clicked, it will send the conversion prompt to the large language model (LLM) for converting the PayPal NVP interfaces in the project into the corresponding REST interfaces.</h2>
+   <h2>Add PPCP Order Converter button . When clicked, it will send the conversion prompt to the large language model (LLM) for converting the PayPal NVP interfaces in the project into the corresponding REST interfaces.</h2>
 
 </sub>
 <sub>

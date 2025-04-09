@@ -1,5 +1,5 @@
 import { VSCodeButton, VSCodeTextField } from "@vscode/webview-ui-toolkit/react"
-import React, { useState } from "react"
+import React from "react"
 const prompt = `Role:
 You are now a PayPal API expert, proficient in PHP, Python, JavaScript, and shell languages, specializing in PayPal NVP API and REST API conversion.
 
@@ -18,15 +18,51 @@ Requirements:
 - For the /v2/checkout/order order creation interface, if needed, avoid using application_context and use payment_source instead. When getting the order URL link, use rel = approve or rel = payer-action
 - Please ensure that the converted REST interface includes all necessary parameters. For example, with SetExpressCheckout, when parameters include items, the parameters should also include breakdown-related parameters`
 
+// 修改接口定义
 interface PaypalNvpButtonProps {
 	onSendMessage: (text: string, images: string[]) => void
+	clientId: string
+	secret: string
+	clientIdError: boolean
+	secretError: boolean
+	setClientId: (value: string) => void
+	setSecret: (value: string) => void
+	setClientIdError: (value: boolean) => void
+	setSecretError: (value: boolean) => void
 }
 
-const PaypalNvpButton: React.FC<PaypalNvpButtonProps> = ({ onSendMessage }) => {
-	const [clientId, setClientId] = useState("")
-	const [secret, setSecret] = useState("")
-
+// 修改组件参数，移除内部状态管理
+const PaypalNvpButton: React.FC<PaypalNvpButtonProps> = ({
+	onSendMessage,
+	clientId,
+	secret,
+	clientIdError,
+	secretError,
+	setClientId,
+	setSecret,
+	setClientIdError,
+	setSecretError,
+}) => {
 	const handleSend = () => {
+		setClientIdError(false)
+		setSecretError(false)
+
+		let hasError = false
+
+		if (!clientId.trim()) {
+			setClientIdError(true)
+			hasError = true
+		}
+
+		if (!secret.trim()) {
+			setSecretError(true)
+			hasError = true
+		}
+
+		if (hasError) {
+			return
+		}
+
 		const updatedPrompt = `${prompt}\n- Among them, Client ID: ${clientId}, Secret: ${secret}`
 		onSendMessage(updatedPrompt, [])
 	}
@@ -42,15 +78,39 @@ const PaypalNvpButton: React.FC<PaypalNvpButtonProps> = ({ onSendMessage }) => {
 			<div style={{ display: "flex", gap: "10px" }}>
 				<VSCodeTextField
 					value={clientId}
-					onChange={(e) => setClientId((e.target as HTMLInputElement).value)}
+					onInput={(e) => {
+						const value = (e.target as HTMLInputElement).value
+						setClientId(value)
+						if (value.trim()) {
+							setClientIdError(false)
+						}
+					}}
 					placeholder="PayPal Client ID"
-					style={{ flex: 1 }}
+					style={{
+						flex: 1,
+						...(clientIdError && {
+							border: "1px solid var(--vscode-inputValidation-errorBorder)",
+							outline: "none",
+						}),
+					}}
 				/>
 				<VSCodeTextField
 					value={secret}
-					onChange={(e) => setSecret((e.target as HTMLInputElement).value)}
+					onInput={(e) => {
+						const value = (e.target as HTMLInputElement).value
+						setSecret(value)
+						if (value.trim()) {
+							setSecretError(false)
+						}
+					}}
 					placeholder="PayPal Secret"
-					style={{ flex: 1 }}
+					style={{
+						flex: 1,
+						...(secretError && {
+							border: "1px solid var(--vscode-inputValidation-errorBorder)",
+							outline: "none",
+						}),
+					}}
 				/>
 			</div>
 			<VSCodeButton
@@ -61,7 +121,7 @@ const PaypalNvpButton: React.FC<PaypalNvpButtonProps> = ({ onSendMessage }) => {
 					color: "var(--vscode-button-foreground)",
 				}}
 				onClick={handleSend}>
-				PPCP order convertor
+				PPCP Order Converter
 			</VSCodeButton>
 		</div>
 	)

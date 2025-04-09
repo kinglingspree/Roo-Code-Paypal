@@ -1,6 +1,6 @@
 {
-	"name": "roo-cline",
-	"displayName": "PPCP order convertor",
+	"name": "paypal-roo-cline",
+	"displayName": "PPCP Order Converter",
 	"description": "A whole dev team of AI agents in your editor.",
 	"publisher": "RooVeterinaryInc",
 	"version": "3.8.6",
@@ -54,7 +54,7 @@
 			"activitybar": [
 				{
 					"id": "roo-cline-ActivityBar",
-					"title": "PPCP order convertor",
+					"title": "PPCP Order Converter",
 					"icon": "./assets/icons/pp.png"
 				}
 			]
