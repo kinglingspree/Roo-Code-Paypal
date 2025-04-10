@@ -2,7 +2,7 @@
 	"name": "paypal-roo-cline",
 	"displayName": "PPCP Order Converter",
 	"description": "A whole dev team of AI agents in your editor.",
-	"publisher": "AI Test Team",
+	"publisher": "PPCP AI Test",
 	"version": "3.8.7",
 	"icon": "assets/icons/pp.png",
 	"galleryBanner": {
@@ -53,104 +53,104 @@
 		"viewsContainers": {
 			"activitybar": [
 				{
-					"id": "paypal-roo-cline-ActivityBar",
+					"id": "roo-cline-ActivityBar",
 					"title": "PPCP Order Converter",
 					"icon": "./assets/icons/pp.png"
 				}
 			]
 		},
 		"views": {
-			"paypal-roo-cline-ActivityBar": [
+			"roo-cline-ActivityBar": [
 				{
 					"type": "webview",
-					"id": "paypal-roo-cline.SidebarProvider",
+					"id": "roo-cline.SidebarProvider",
 					"name": ""
 				}
 			]
 		},
 		"commands": [
 			{
-				"command": "paypal-roo-cline.plusButtonClicked",
+				"command": "roo-cline.plusButtonClicked",
 				"title": "New Task",
 				"icon": "$(add)"
 			},
 			{
-				"command": "paypal-roo-cline.mcpButtonClicked",
+				"command": "roo-cline.mcpButtonClicked",
 				"title": "MCP Servers",
 				"icon": "$(server)"
 			},
 			{
-				"command": "paypal-roo-cline.promptsButtonClicked",
+				"command": "roo-cline.promptsButtonClicked",
 				"title": "Prompts",
 				"icon": "$(notebook)"
 			},
 			{
-				"command": "paypal-roo-cline.historyButtonClicked",
+				"command": "roo-cline.historyButtonClicked",
 				"title": "History",
 				"icon": "$(history)"
 			},
 			{
-				"command": "paypal-roo-cline.popoutButtonClicked",
+				"command": "roo-cline.popoutButtonClicked",
 				"title": "Open in Editor",
 				"icon": "$(link-external)"
 			},
 			{
-				"command": "paypal-roo-cline.settingsButtonClicked",
+				"command": "roo-cline.settingsButtonClicked",
 				"title": "Settings",
 				"icon": "$(settings-gear)"
 			},
 			{
-				"command": "paypal-roo-cline.helpButtonClicked",
+				"command": "roo-cline.helpButtonClicked",
 				"title": "Documentation",
 				"icon": "$(question)"
 			},
 			{
-				"command": "paypal-roo-cline.openInNewTab",
+				"command": "roo-cline.openInNewTab",
 				"title": "Open In New Tab",
-				"category": "PPCP"
+				"category": "Roo Code"
 			},
 			{
-				"command": "paypal-roo-cline.explainCode",
+				"command": "roo-cline.explainCode",
 				"title": "Roo Code: Explain Code",
-				"category": "PPCP"
+				"category": "Roo Code"
 			},
 			{
-				"command": "paypal-roo-cline.fixCode",
+				"command": "roo-cline.fixCode",
 				"title": "Roo Code: Fix Code",
-				"category": "PPCP"
+				"category": "Roo Code"
 			},
 			{
-				"command": "paypal-roo-cline.improveCode",
+				"command": "roo-cline.improveCode",
 				"title": "Roo Code: Improve Code",
-				"category": "PPCP"
+				"category": "Roo Code"
 			},
 			{
-				"command": "paypal-roo-cline.addToContext",
+				"command": "roo-cline.addToContext",
 				"title": "Roo Code: Add To Context",
-				"category": "PPCP"
+				"category": "Roo Code"
 			},
 			{
-				"command": "paypal-roo-cline.terminalAddToContext",
+				"command": "roo-cline.terminalAddToContext",
 				"title": "Roo Code: Add Terminal Content to Context",
 				"category": "Terminal"
 			},
 			{
-				"command": "paypal-roo-cline.terminalFixCommand",
+				"command": "roo-cline.terminalFixCommand",
 				"title": "Roo Code: Fix This Command",
 				"category": "Terminal"
 			},
 			{
-				"command": "paypal-roo-cline.terminalExplainCommand",
+				"command": "roo-cline.terminalExplainCommand",
 				"title": "Roo Code: Explain This Command",
 				"category": "Terminal"
 			},
 			{
-				"command": "paypal-roo-cline.terminalFixCommandInCurrentTask",
+				"command": "roo-cline.terminalFixCommandInCurrentTask",
 				"title": "Roo Code: Fix This Command (Current Task)",
 				"category": "Terminal"
 			},
 			{
-				"command": "paypal-roo-cline.terminalExplainCommandInCurrentTask",
+				"command": "roo-cline.terminalExplainCommandInCurrentTask",
 				"title": "Roo Code: Explain This Command (Current Task)",
 				"category": "Terminal"
 			}
@@ -158,83 +158,83 @@
 		"menus": {
 			"editor/context": [
 				{
-					"command": "paypal-roo-cline.explainCode",
+					"command": "roo-cline.explainCode",
 					"when": "editorHasSelection",
-					"group": "PPCP@1"
+					"group": "Roo Code@1"
 				},
 				{
-					"command": "paypal-roo-cline.fixCode",
+					"command": "roo-cline.fixCode",
 					"when": "editorHasSelection",
-					"group": "PPCP@2"
+					"group": "Roo Code@2"
 				},
 				{
-					"command": "paypal-roo-cline.improveCode",
+					"command": "roo-cline.improveCode",
 					"when": "editorHasSelection",
-					"group": "PPCP@3"
+					"group": "Roo Code@3"
 				},
 				{
-					"command": "paypal-roo-cline.addToContext",
+					"command": "roo-cline.addToContext",
 					"when": "editorHasSelection",
-					"group": "PPCP@4"
+					"group": "Roo Code@4"
 				}
 			],
 			"terminal/context": [
 				{
-					"command": "paypal-roo-cline.terminalAddToContext",
-					"group": "PPCP@1"
+					"command": "roo-cline.terminalAddToContext",
+					"group": "Roo Code@1"
 				},
 				{
-					"command": "paypal-roo-cline.terminalFixCommand",
-					"group": "PPCP@2"
+					"command": "roo-cline.terminalFixCommand",
+					"group": "Roo Code@2"
 				},
 				{
-					"command": "paypal-roo-cline.terminalExplainCommand",
-					"group": "PPCP@3"
+					"command": "roo-cline.terminalExplainCommand",
+					"group": "Roo Code@3"
 				},
 				{
-					"command": "paypal-roo-cline.terminalFixCommandInCurrentTask",
-					"group": "PPCP@5"
+					"command": "roo-cline.terminalFixCommandInCurrentTask",
+					"group": "Roo Code@5"
 				},
 				{
-					"command": "paypal-roo-cline.terminalExplainCommandInCurrentTask",
-					"group": "PPCP@6"
+					"command": "roo-cline.terminalExplainCommandInCurrentTask",
+					"group": "Roo Code@6"
 				}
 			],
 			"view/title": [
 				{
-					"command": "paypal-roo-cline.plusButtonClicked",
+					"command": "roo-cline.plusButtonClicked",
 					"group": "navigation@1",
-					"when": "view == paypal-roo-cline.SidebarProvider"
+					"when": "view == roo-cline.SidebarProvider"
 				},
 				{
-					"command": "paypal-roo-cline.promptsButtonClicked",
+					"command": "roo-cline.promptsButtonClicked",
 					"group": "navigation@2",
-					"when": "view == paypal-roo-cline.SidebarProvider"
+					"when": "view == roo-cline.SidebarProvider"
 				},
 				{
-					"command": "paypal-roo-cline.mcpButtonClicked",
+					"command": "roo-cline.mcpButtonClicked",
 					"group": "navigation@3",
-					"when": "view == paypal-roo-cline.SidebarProvider"
+					"when": "view == roo-cline.SidebarProvider"
 				},
 				{
-					"command": "paypal-roo-cline.historyButtonClicked",
+					"command": "roo-cline.historyButtonClicked",
 					"group": "navigation@4",
-					"when": "view == paypal-roo-cline.SidebarProvider"
+					"when": "view == roo-cline.SidebarProvider"
 				},
 				{
-					"command": "paypal-roo-cline.popoutButtonClicked",
+					"command": "roo-cline.popoutButtonClicked",
 					"group": "navigation@5",
-					"when": "view == paypal-roo-cline.SidebarProvider"
+					"when": "view == roo-cline.SidebarProvider"
 				},
 				{
-					"command": "paypal-roo-cline.settingsButtonClicked",
+					"command": "roo-cline.settingsButtonClicked",
 					"group": "navigation@6",
-					"when": "view == paypal-roo-cline.SidebarProvider"
+					"when": "view == roo-cline.SidebarProvider"
 				},
 				{
-					"command": "paypal-roo-cline.helpButtonClicked",
+					"command": "roo-cline.helpButtonClicked",
 					"group": "navigation@7",
-					"when": "view == paypal-roo-cline.SidebarProvider"
+					"when": "view == roo-cline.SidebarProvider"
 				}
 			]
 		},

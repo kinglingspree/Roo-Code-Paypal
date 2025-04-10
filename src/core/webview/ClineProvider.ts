@@ -73,8 +73,8 @@ export type ClineProviderEvents = {
 }
 
 export class ClineProvider extends EventEmitter<ClineProviderEvents> implements vscode.WebviewViewProvider {
-	public static readonly sideBarId = "roo-cline.SidebarProvider" // used in package.json as the view's id. This value cannot be changed due to how vscode caches views based on their id, and updating the id would break existing instances of the extension.
-	public static readonly tabPanelId = "roo-cline.TabPanelProvider"
+	public static readonly sideBarId = "paypal-roo-cline.SidebarProvider" // used in package.json as the view's id. This value cannot be changed due to how vscode caches views based on their id, and updating the id would break existing instances of the extension.
+	public static readonly tabPanelId = "paypal-roo-cline.TabPanelProvider"
 	private static activeInstances: Set<ClineProvider> = new Set()
 	private disposables: vscode.Disposable[] = []
 	private view?: vscode.WebviewView | vscode.WebviewPanel
@@ -237,7 +237,7 @@ export class ClineProvider extends EventEmitter<ClineProviderEvents> implements 
 
 		// If no visible provider, try to show the sidebar view
 		if (!visibleProvider) {
-			await vscode.commands.executeCommand("roo-cline.SidebarProvider.focus")
+			await vscode.commands.executeCommand("paypal-roo-cline.SidebarProvider.focus")
 			// Wait briefly for the view to become visible
 			await delay(100)
 			visibleProvider = ClineProvider.getVisibleInstance()
@@ -1117,7 +1117,7 @@ export class ClineProvider extends EventEmitter<ClineProviderEvents> implements 
 						await this.context.globalState.update("allowedCommands", message.commands)
 						// Also update workspace settings
 						await vscode.workspace
-							.getConfiguration("roo-cline")
+							.getConfiguration("paypal-roo-cline")
 							.update("allowedCommands", message.commands, vscode.ConfigurationTarget.Global)
 						break
 					case "openMcpSettings": {
@@ -1879,7 +1879,7 @@ export class ClineProvider extends EventEmitter<ClineProviderEvents> implements 
 						break
 					case "humanRelayResponse":
 						if (message.requestId && message.text) {
-							vscode.commands.executeCommand("roo-cline.handleHumanRelayResponse", {
+							vscode.commands.executeCommand("paypal-roo-cline.handleHumanRelayResponse", {
 								requestId: message.requestId,
 								text: message.text,
 								cancelled: false,
@@ -1889,7 +1889,7 @@ export class ClineProvider extends EventEmitter<ClineProviderEvents> implements 
 
 					case "humanRelayCancel":
 						if (message.requestId) {
-							vscode.commands.executeCommand("roo-cline.handleHumanRelayResponse", {
+							vscode.commands.executeCommand("paypal-roo-cline.handleHumanRelayResponse", {
 								requestId: message.requestId,
 								cancelled: true,
 							})
@@ -2368,7 +2368,8 @@ export class ClineProvider extends EventEmitter<ClineProviderEvents> implements 
 		const telemetryKey = process.env.POSTHOG_API_KEY
 		const machineId = vscode.env.machineId
 
-		const allowedCommands = vscode.workspace.getConfiguration("roo-cline").get<string[]>("allowedCommands") || []
+		const allowedCommands =
+			vscode.workspace.getConfiguration("paypal-roo-cline").get<string[]>("allowedCommands") || []
 
 		const cwd = vscode.workspace.workspaceFolders?.map((folder) => folder.uri.fsPath).at(0) || ""
 
